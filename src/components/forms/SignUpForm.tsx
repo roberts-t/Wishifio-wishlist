@@ -55,7 +55,6 @@ export const SignUpForm = () => {
                 const errors = err?.response?.data?.errors;
                 const errorCode = err?.response?.data?.errorCode;
                 if (errors && errors.length > 0) {
-                    console.log(errors);
                     errors.forEach((error: any) => {
                         const serverError = signupErrors[error.msg as keyof typeof signupErrors];
                         actions.setFieldError(serverError.field, serverError.msg);

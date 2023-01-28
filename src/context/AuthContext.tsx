@@ -9,13 +9,12 @@ export const AuthContextProvider = ({children} : AuthContextProps) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const getAuthStatus = async () => {
-        await api.get("auth/user")
+    const getAuthStatus = () => {
+        api.get("auth/user")
             .then((res) => {
                 if (res.status === 200 && res.data) {
                     setUser(res.data);
                     setIsAuthenticated(true);
-                    console.log("User is authenticated");
                 } else {
                     setIsAuthenticated(false);
                 }
@@ -28,7 +27,7 @@ export const AuthContextProvider = ({children} : AuthContextProps) => {
     }
 
     useEffect(() => {
-        getAuthStatus().then();
+        getAuthStatus();
     }, []);
 
     const value = {

@@ -33,7 +33,7 @@ function App() {
                 }
             />
             <Route path="wishlist/:hash" element={<Wishlist />} />
-            <Route path="wishlist/:id/add" element={<AddWish />} />
+            <Route path="wishlist/:hash/add" element={<AddWish />} />
             <Route path="*" element={<div>404</div>} />
         </Routes>
   );

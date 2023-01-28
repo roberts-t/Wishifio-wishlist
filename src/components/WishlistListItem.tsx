@@ -1,5 +1,6 @@
 import React from 'react';
 import { WishlistListItemDropdown } from './dropdowns/WishlistListItemDropdown';
+import { Link } from "react-router-dom";
 
 export const WishlistListItem: React.FC<ListProps> = (props) => {
     return (
@@ -21,12 +22,12 @@ export const WishlistListItem: React.FC<ListProps> = (props) => {
                         </p>
                     </div>
                     <div className="text-center pb-4">
-                        <button
+                        <Link
                             className="bg-dark text-white font-semibold px-8 py-2 rounded-sm hover:bg-dark-hover transition duration-200"
-                            type="button"
+                            to={`/wishlist/${props.wishlistHash}`}
                         >
                             View list
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -40,4 +41,5 @@ interface ListProps {
     description: string;
     wishlistImage: string;
     deleteWishlist: (id: string) => void;
+    wishlistHash: string;
 }

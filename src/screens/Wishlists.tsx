@@ -51,28 +51,9 @@ export const Wishlists = () => {
                                     description={wishlist.description}
                                     wishlistImage={"http://localhost:5000" + wishlist.imageUrl}
                                     deleteWishlist={removeWishlist}
+                                    wishlistHash={wishlist.hash}
                                 />
                             ))}
-                            {/*<WishlistListItem*/}
-                            {/*    title="My test wishlist!"*/}
-                            {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper erat id urna molestie efficitur. Aliquam erat volutpat. Pellentesque sed dolor erat. Duis id semper quam. Etiam sed lorem euismod, interdum elit id, aliquet urna. Ut a enim ut nulla sagittis scelerisque quis at dolor. Morbi vitae congue leo. Vestibulum efficitur porta purus, non tristique tellus molestie sed."*/}
-                            {/*    wishlistImage="" />*/}
-                            {/*<WishlistListItem*/}
-                            {/*    title="My test wishlist!"*/}
-                            {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper erat id urna molestie efficitur. Aliquam erat volutpat. Pellentesque sed dolor erat. Duis id semper quam. Etiam sed lorem euismod, interdum elit id, aliquet urna. Ut a enim ut nulla sagittis scelerisque quis at dolor. Morbi vitae congue leo. Vestibulum efficitur porta purus, non tristique tellus molestie sed."*/}
-                            {/*    wishlistImage="" />*/}
-                            {/*<WishlistListItem*/}
-                            {/*    title="My test wishlist!"*/}
-                            {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper erat id urna molestie efficitur. Aliquam erat volutpat. Pellentesque sed dolor erat. Duis id semper quam. Etiam sed lorem euismod, interdum elit id, aliquet urna. Ut a enim ut nulla sagittis scelerisque quis at dolor. Morbi vitae congue leo. Vestibulum efficitur porta purus, non tristique tellus molestie sed."*/}
-                            {/*    wishlistImage="" />*/}
-                            {/*<WishlistListItem*/}
-                            {/*    title="My test wishlist!"*/}
-                            {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper erat id urna molestie efficitur. Aliquam erat volutpat. Pellentesque sed dolor erat. Duis id semper quam. Etiam sed lorem euismod, interdum elit id, aliquet urna. Ut a enim ut nulla sagittis scelerisque quis at dolor. Morbi vitae congue leo. Vestibulum efficitur porta purus, non tristique tellus molestie sed."*/}
-                            {/*    wishlistImage="" />*/}
-                            {/*<WishlistListItem*/}
-                            {/*    title="My test wishlist!"*/}
-                            {/*    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper erat id urna molestie efficitur. Aliquam erat volutpat. Pellentesque sed dolor erat. Duis id semper quam. Etiam sed lorem euismod, interdum elit id, aliquet urna. Ut a enim ut nulla sagittis scelerisque quis at dolor. Morbi vitae congue leo. Vestibulum efficitur porta purus, non tristique tellus molestie sed."*/}
-                            {/*    wishlistImage="" />*/}
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,6 @@ import { LoadingPage } from '../screens/LoadingPage';
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = (props) => {
     const renderPage = () => {
-        console.log(props.user, props.isLoading);
         if (props.isLoading) {
             return <LoadingPage />
         } else if (!props.user) {

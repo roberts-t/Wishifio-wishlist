@@ -37,7 +37,6 @@ export const FormFileUpload: React.FC<FileUploadProps> = (props) => {
             if (props.fileValidation) {
                 const validation = props.fileValidation(file);
                 if (validation !== true) {
-                    console.log(validation);
                     helpers.setError(validation as string);
                     return;
                 }
