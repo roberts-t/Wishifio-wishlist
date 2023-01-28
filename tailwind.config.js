@@ -24,6 +24,9 @@ module.exports = {
       },
       borderColor: {
         'dark': '#333',
+      },
+      colors: {
+        'success': '#4BB543',
       }
     },
   },

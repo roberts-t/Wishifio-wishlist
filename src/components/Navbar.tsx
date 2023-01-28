@@ -1,11 +1,14 @@
 import { BsFillGiftFill } from 'react-icons/bs';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from './NavLink';
 import { AuthModal } from './modals/AuthModal/AuthModal';
+import { AuthContext, AuthContextType } from '../context/AuthContext';
+import { AccountNavDropdown } from './dropdowns/AccountNavDropdown';
 
 export const Navbar = () => {
     const [isAuthOpen, setIsAuthOpen] = useState(false);
     const [authTab, setAuthTab] = useState(1);
+    const { isAuthenticated, isLoading, user, getAuthStatus } = useContext(AuthContext) as AuthContextType;
 
     const openAuthModal = (tab: number) => {
         setIsAuthOpen(true);
@@ -30,18 +33,26 @@ export const Navbar = () => {
                     </ul>
                 </div>
                 <div className="gap-x-4 flex">
-                    <button
-                        onClick={() => openAuthModal(1)}
-                        className="text-white px-4 py-1.5 rounded-sm border-sky-500 text-sky-500 border font-medium"
-                    >
-                        Log in
-                    </button>
-                    <button
-                        onClick={() => openAuthModal(2)}
-                        className="text-white px-4 py-1.5 rounded-sm bg-sky-500"
-                    >
-                        Sign up
-                    </button>
+                    {!isAuthenticated && !isLoading ? (
+                        <>
+                            <button
+                                onClick={() => openAuthModal(1)}
+                                className="text-white px-4 py-1.5 rounded-sm border-sky-500 text-sky-500 border font-medium"
+                            >
+                                Log in
+                            </button>
+                            <button
+                                onClick={() => openAuthModal(2)}
+                                className="text-white px-4 py-1.5 rounded-sm bg-sky-500"
+                            >
+                                Sign up
+                            </button>
+                        </>
+                    ) :
+                    (
+                        <AccountNavDropdown user={user} getAuthStatus={getAuthStatus} />
+                    )
+                    }
                 </div>
             </div>
             <AuthModal isOpen={isAuthOpen} setIsOpen={setIsAuthOpen} tab={authTab} setTab={setAuthTab} />

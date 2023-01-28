@@ -11,7 +11,7 @@ export const AuthModal: React.FC<AuthModalProps> = (props) => {
     }
 
     const renderTab = () => {
-        if (props.tab === 1) return <LoginTab setTab={props.setTab} />;
+        if (props.tab === 1) return <LoginTab setTab={props.setTab} closeModal={closeModal} />;
         else if (props.tab === 2) return <RegisterTab setTab={props.setTab}  />;
     }
 
