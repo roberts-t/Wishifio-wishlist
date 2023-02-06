@@ -53,7 +53,7 @@ export const Wishlists = () => {
                             {wishlists.map((wishlist: any) => (
                                 <WishlistListItem
                                     key={wishlist.id}
-                                    id={wishlist.id}
+                                    hash={wishlist.hash}
                                     title={wishlist.title}
                                     description={wishlist.description}
                                     wishlistImage={"http://localhost:5000" + wishlist.imageUrl}

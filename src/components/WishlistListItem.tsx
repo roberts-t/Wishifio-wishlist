@@ -12,7 +12,7 @@ export const WishlistListItem: React.FC<ListProps> = (props) => {
                         alt="Wishlist cover"
                         className="w-24 h-24 rounded-lg object-cover"
                     />
-                    <WishlistListItemDropdown wishlistId={props.id} deleteWishlist={props.deleteWishlist} />
+                    <WishlistListItemDropdown wishlistHash={props.hash} deleteWishlist={props.deleteWishlist} />
                 </div>
                 <div className="bg-white rounded-t-xl pt-3 flex flex-col h-full justify-between">
                     <div className="pb-4 px-5 col-span-2">
@@ -36,7 +36,7 @@ export const WishlistListItem: React.FC<ListProps> = (props) => {
 };
 
 interface ListProps {
-    id: string;
+    hash: string;
     title: string;
     description: string;
     wishlistImage: string;

@@ -11,8 +11,8 @@ export const WishlistListItemDropdown: React.FC<WishlistListItemDropdownProps> =
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
     const handleDeleteWishlist = () => {
-        api.delete(`/wishlist/${props.wishlistId}`).then(async() => {
-            props.deleteWishlist(props.wishlistId);
+        api.delete(`/wishlist/${props.wishlistHash}`).then(async() => {
+            props.deleteWishlist(props.wishlistHash);
         }).catch((err) => {
             console.log(err);
         });
@@ -78,6 +78,6 @@ export const WishlistListItemDropdown: React.FC<WishlistListItemDropdownProps> =
 };
 
 interface WishlistListItemDropdownProps {
-    wishlistId: string;
+    wishlistHash: string;
     deleteWishlist: (id: string) => void;
 }
