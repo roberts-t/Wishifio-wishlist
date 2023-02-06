@@ -1,16 +1,14 @@
 import React from 'react';
-import { Navbar } from '../components/Navbar';
 import { AiFillStar } from 'react-icons/ai';
 import { HiOutlineLightBulb, HiOutlineViewGridAdd, HiOutlineShare } from 'react-icons/hi';
 import { MdOutlineCreate } from 'react-icons/md';
 import { ReactComponent as OnlineWish } from '../assets/vectors/online-wish.svg';
 import { WishStep } from '../components/WishStep';
-import { Footer } from '../components/Footer';
+import { Page } from "./Page";
 
 export const Home = () => {
     return (
-        <div className="min-h-screen font-montserrat">
-            <Navbar />
+        <Page>
             <div className="container mx-auto px-20">
                 <div className="py-24">
                     <div className="grid grid-cols-2 gap-8">
@@ -63,7 +61,6 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
-        </div>
+        </Page>
     );
 };

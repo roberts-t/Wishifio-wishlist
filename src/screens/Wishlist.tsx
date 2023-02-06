@@ -1,23 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
+import React, {useContext, useEffect, useState} from 'react';
 import { IoMdSettings, IoMdAddCircleOutline } from 'react-icons/io';
 import { WishlistItem } from '../components/WishlistItem';
 import { BiShare } from 'react-icons/bi';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { api } from '../config/request';
 import { ReactComponent as EmptyWishlist } from '../assets/vectors/empty-wishlist.svg';
+import { Page } from "./Page";
+import {AuthContext, AuthContextType} from "../context/AuthContext";
 
 export const Wishlist = () => {
     const { hash } = useParams();
     const [wishlist, setWishlist] = useState<any>(null);
+    const [isOwner, setIsOwner] = useState<boolean>(false);
+    const { user } = useContext(AuthContext) as AuthContextType;
 
     const getWishlist = () => {
         api.get(`/wishlist/${hash}`).then((res) => {
             console.log(res.data);
-            setWishlist(res.data);
+            setWishlist(res.data.wishlist);
+            setIsOwner(res.data.isOwner);
         }).catch((err) => {
             console.log(err);
+        });
+    }
+
+    const removeItem = (id: string) => {
+        const newItems = wishlist.items.filter((item: any) => item._id !== id);
+        setWishlist({
+            ...wishlist,
+            items: newItems
         });
     }
 
@@ -26,8 +37,7 @@ export const Wishlist = () => {
     }, []);
 
     return (
-        <div className="min-h-screen font-montserrat">
-            <Navbar />
+        <Page>
             {wishlist && (
                 <>
                     <div className="container mx-auto px-20">
@@ -58,16 +68,26 @@ export const Wishlist = () => {
                                 <button className="bg-dark hover:bg-dark-hover transition text-white px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1">
                                     <BiShare className="text-lg" /> Share
                                 </button>
-                                <button className="border-gray-600 transition hover:bg-sky-500 hover:text-white hover:border-sky-500 border-2 text-dark transition px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1">
-                                    <IoMdAddCircleOutline className="text-lg" /> Add a wish
-                                </button>
+                                <Link
+                                    className="border-gray-600 transition hover:bg-sky-500 hover:text-white hover:border-sky-500 border-2 text-dark transition px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1"
+                                    to={`/wishlist/${hash}/add`}
+                                >
+                                    <IoMdAddCircleOutline className="text-lg" />
+                                    Add a wish
+                                </Link>
                             </div>
                             <p className="pb-6 text-gray-600">Visibility: <span>{wishlist.settings.isShared ? "Shared" : "Private"}</span></p>
                             <h3 className="text-gray-700 font-medium text-xl my-2.5">Wishlist wishes</h3>
                             <div className="grid grid-cols-1 gap-y-6 mb-8">
                                 {wishlist.items.length > 0 ? (
                                     wishlist.items.map((item: any) => (
-                                        <WishlistItem key={item._id} />
+                                        <WishlistItem
+                                            key={item._id}
+                                            item={item}
+                                            isOwner={isOwner}
+                                            wishlistHash={hash}
+                                            removeItem={removeItem}
+                                        />
                                     ))
                                     ) :
                                     (
@@ -82,7 +102,6 @@ export const Wishlist = () => {
                     </div>
                 </>
             )}
-            <Footer />
-        </div>
+        </Page>
     );
 };

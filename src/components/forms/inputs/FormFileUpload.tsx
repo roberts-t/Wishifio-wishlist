@@ -53,8 +53,8 @@ export const FormFileUpload: React.FC<FileUploadProps> = (props) => {
 
     const handleRemoveFile = () => {
         setFile('');
-        hiddenFileInput.current!.value = '';
         helpers.setError('');
+        helpers.setValue('');
     }
 
     return (
@@ -70,9 +70,9 @@ export const FormFileUpload: React.FC<FileUploadProps> = (props) => {
                 <>
                     <div
                         onClick={handleFileInputClick}
-                        className="cursor-pointer w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center relative hover:bg-gray-300 transition duration-200"
+                        className={`cursor-pointer w-${props.customSize || "24"} h-${props.customSize || "24"} bg-gray-200 rounded-lg flex items-center justify-center relative hover:bg-gray-300 transition duration-200`}
                     >
-                            {file && <img src={file} alt="preview" className="w-24 h-24 rounded-lg object-cover" />}
+                            {file && <img src={file} alt="preview" className={`w-${props.customSize || "24"} h-${props.customSize || "24"} rounded-lg object-cover`} />}
                             <MdOutlineCreate className={"text-gray-700 absolute "
                                 + (!file ? "text-4xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                                 : "text-3xl top-1 right-1 bg-gray-200 rounded-full p-1 opacity-80")
@@ -114,6 +114,7 @@ interface FileUploadProps {
     inputClassName?: string;
     containerClassName?: string;
     customLook?: boolean
+    customSize?: string;
     required?: boolean;
     image?: boolean;
     acceptedFileTypes?: string[];

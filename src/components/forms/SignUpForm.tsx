@@ -3,7 +3,7 @@ import { FormikForm } from './FormikForm';
 import * as yup from 'yup';
 import { FormInput } from './inputs/FormInput';
 import { api } from '../../config/request';
-import { signupErrors } from '../../config/serverErrors';
+import { processServerErrors, signupErrors } from '../../config/serverErrors';
 import { CiMail } from 'react-icons/ci';
 
 export const SignUpForm = () => {
@@ -51,19 +51,8 @@ export const SignUpForm = () => {
             setSuccess(true);
             actions.setSubmitting(false);
         }).catch((err) => {
-            if (err.response.status !== 500) {
-                const errors = err?.response?.data?.errors;
-                const errorCode = err?.response?.data?.errorCode;
-                if (errors && errors.length > 0) {
-                    errors.forEach((error: any) => {
-                        const serverError = signupErrors[error.msg as keyof typeof signupErrors];
-                        actions.setFieldError(serverError.field, serverError.msg);
-                    });
-                } else if (errorCode) {
-                    const serverError = signupErrors[errorCode as keyof typeof signupErrors];
-                    actions.setFieldError(serverError.field, serverError.msg);
-                }
-            } else {
+            const serverError = processServerErrors(err, actions, setGeneralError, signupErrors);
+            if (!serverError) {
                 setGeneralError(signupErrors['REGISTER_ERROR' as keyof typeof signupErrors].msg);
             }
             actions.setSubmitting(false);

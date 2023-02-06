@@ -4,6 +4,7 @@ import { FormInput } from './inputs/FormInput';
 import { FormFileUpload } from './inputs/FormFileUpload';
 import * as yup from 'yup';
 import { api } from '../../config/request';
+import { imageValidation } from "../../helpers/validationHelpers";
 import { createWishlistErrors, processServerErrors } from '../../config/serverErrors';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,15 +28,6 @@ export const CreateWishlistForm = () => {
             .required('Description is required')
             .max(500, 'Description must be less than 500 characters')
             .min(1, 'Description must be at least 1 characters'),
-    }
-
-    const imageValidation = (file: File) => {
-        if (!file || !file.size) return 'Uploaded image is not valid';
-        else if (file.size > (1024 * 1024) * 4) return 'Image size cannot exceed 4MB';
-        else if (!['image/png', 'image/jpeg', 'image/jpg'].includes(file.type)) {
-            return 'Image can only be of type png, jpeg or jpg';
-        }
-        return true;
     }
 
     const onSubmit = (values: any, actions: any) => {

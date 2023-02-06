@@ -2,7 +2,7 @@
 export const processServerErrors = (err: any, actions: any, setGeneral: (msg: string) => void, errorObj: any) => {
     const errors = err?.response?.data?.errors;
     const errorCode = err?.response?.data?.errorCode;
-    if (errors && errors.length > 0) {
+    if (actions !== undefined && errors && errors.length > 0) {
         console.log(errors);
         errors.forEach((error: any) => {
             const serverError = errorObj[error.msg as keyof typeof signupErrors];
@@ -112,6 +112,80 @@ export const createWishlistErrors = {
         msg: 'Image can only be of type png, jpeg or jpg'
     },
     'WISHLIST_ERROR': {
+        field: 'general',
+        msg: 'Something went wrong, please try again'
+    }
+}
+
+export const createItemErrors = {
+    'WISHLIST_HASH_REQ': {
+        field: 'general',
+        msg: 'Something went wrong, please try again'
+    },
+    'NAME_REQ': {
+        field: 'name',
+        msg: 'Wish name is required'
+    },
+    'NAME_LEN': {
+        field: 'name',
+        msg: 'Wish name must be at most 50 characters'
+    },
+    'SUBTITLE_LEN': {
+        field: 'subtitle',
+        msg: 'Subtitle must be at most 200 characters'
+    },
+    'PRICE_REQ': {
+        field: 'price',
+        msg: 'Price is required'
+    },
+    'PRICE_LEN': {
+        field: 'price',
+        msg: 'Price must be at most 10 characters'
+    },
+    'URL_INVALID': {
+        field: 'link',
+        msg: 'Link must be a valid URL'
+    },
+    'NOTES_LEN': {
+        field: 'note',
+        msg: 'Notes must be at most 500 characters'
+    },
+    'NOT_IMAGE': {
+        field: 'image',
+        msg: 'Image must be a valid image file'
+    },
+    'IMAGE_COUNT': {
+        field: 'image',
+        msg: 'You can only upload 1 image'
+    },
+    'IMAGE_SIZE': {
+        field: 'image',
+        msg: 'Image must be no more than 4MB'
+    },
+    'IMAGE_FORMAT': {
+        field: 'image',
+        msg: 'Image can only be of type png, jpeg or jpg'
+    },
+    'ITEM_ERROR': {
+        field: 'general',
+        msg: 'Something went wrong, please try again'
+    },
+    'WISHLIST_NOT_FOUND': {
+        field: 'general',
+        msg: 'Something went wrong, please try again'
+    },
+    'IMAGE_UPLOAD_ERROR': {
+        field: 'general',
+        msg: 'Something went wrong, please try again'
+    }
+}
+
+export const deleteWishlistErrors = {
+    'ITEM_NOT_FOUND': {
+        field: 'general',
+        msg: 'Wishlist item was not found'
+    },
+    'ITEM_ERROR': {
         field: 'general',
         msg: 'Something went wrong, please try again'
     }
