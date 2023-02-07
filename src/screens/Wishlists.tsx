@@ -15,9 +15,9 @@ export const Wishlists = () => {
         });
     }
 
-    const removeWishlist = (id: string) => {
+    const removeWishlist = (hash: string) => {
         setWishlists(
-            wishlists.filter((wishlist: any) => wishlist._id !== id)
+            wishlists.filter((wishlist: any) => wishlist.hash !== hash)
         )
     }
 
