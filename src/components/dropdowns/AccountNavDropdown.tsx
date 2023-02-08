@@ -4,6 +4,7 @@ import { api } from '../../config/request';
 import { FiChevronDown } from 'react-icons/fi';
 import { BsGift } from 'react-icons/bs';
 import { BsDoorOpen } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => {
 
@@ -38,7 +39,7 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
                         <div className="px-1 py-1">
                             <Menu.Item>
                                 {({ active }) => (
-                                    <a href="/wishlists">
+                                    <Link to="/wishlists">
                                     <button
                                         className={`${
                                             active ? 'bg-sky-500 text-white' : 'text-gray-900'
@@ -47,7 +48,7 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
                                         <BsGift className="mr-1.5" />
                                         My wishlists
                                     </button>
-                                    </a>
+                                    </Link>
                                 )}
                             </Menu.Item>
                             <Menu.Item>
