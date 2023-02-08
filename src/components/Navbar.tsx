@@ -4,6 +4,7 @@ import { NavLink } from './NavLink';
 import { AuthModal } from './modals/AuthModal/AuthModal';
 import { AuthContext, AuthContextType } from '../context/AuthContext';
 import { AccountNavDropdown } from './dropdowns/AccountNavDropdown';
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
     const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -18,17 +19,31 @@ export const Navbar = () => {
     return (
         <nav className="w-full p-4 shadow bg-white">
             <div className="container mx-auto px-20 flex justify-between items-center">
-                <div className="flex flex-row items-center gap-x-2">
-                    <div className="bg-gradient-to-r from-sky-400 to-sky-600 rounded-full p-3">
-                        <BsFillGiftFill className="text-2xl text-white" />
+                <Link to="/" >
+                    <div className="flex flex-row items-center gap-x-2">
+                        <div className="bg-gradient-to-r from-sky-400 to-sky-600 rounded-full p-3">
+                            <BsFillGiftFill className="text-2xl text-white" />
+                        </div>
+                        <p className="font-bold text-xl">WishBox</p>
                     </div>
-                    <p className="font-bold text-xl">WishBox</p>
-                </div>
+                </Link>
                 <div>
                     <ul className="flex items-center gap-x-8">
                         <NavLink title="Home" href="/" />
-                        <NavLink title="My Wishlists" href="/wishlists" />
-                        <NavLink title="Create a wishlist" href="/wishlist/create" />
+                        <NavLink
+                            title="My Wishlists"
+                            href="/wishlists"
+                            requiresAuth={true}
+                            isAuth={isAuthenticated}
+                            noAuthAction={() => openAuthModal(1)}
+                        />
+                        <NavLink
+                            title="Create a wishlist"
+                            href="/wishlist/create"
+                            requiresAuth={true}
+                            isAuth={isAuthenticated}
+                            noAuthAction={() => openAuthModal(1)}
+                        />
                         <NavLink title="About" href="/about" />
                     </ul>
                 </div>

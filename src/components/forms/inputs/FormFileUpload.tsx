@@ -65,6 +65,9 @@ export const FormFileUpload: React.FC<FileUploadProps> = (props) => {
             >
                 {props.label}
                 {props.required && <span className="text-red-500 ml-0.5 text-sm">*</span>}
+                {props.subLabel && <span className="block leading-none text-sm font-normal text-gray-500 mb-0.5">
+                    {props.subLabel}
+                </span>}
             </label>
             {props.customLook &&
                 <>
@@ -110,6 +113,7 @@ export const FormFileUpload: React.FC<FileUploadProps> = (props) => {
 interface FileUploadProps {
     name: string;
     label: string;
+    subLabel?: string;
     labelClassName?: string;
     inputClassName?: string;
     containerClassName?: string;

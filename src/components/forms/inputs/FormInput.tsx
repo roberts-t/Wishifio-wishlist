@@ -8,13 +8,18 @@ export const FormInput: React.FC<TextInputProps> = (props) => {
     return (
         <div className={props.containerClassName}>
             {props.label &&
-                <label
-                    className={props.labelClassName}
-                    htmlFor={props.id || props.name}
-                >
-                    {props.label}
-                    {props.required && <span className="text-red-500 ml-0.5 text-sm">*</span>}
-                </label>
+                <>
+                    <label
+                        className={props.labelClassName}
+                        htmlFor={props.id || props.name}
+                    >
+                        {props.label}
+                        {props.required && <span className="text-red-500 ml-0.5 text-sm">*</span>}
+                        {props.subLabel && <span className="block leading-none text-sm font-normal text-gray-500 mb-1.5">
+                            {props.subLabel}
+                        </span>}
+                    </label>
+                </>
             }
             <CustomInput
                 {...field}
@@ -38,6 +43,7 @@ interface TextInputProps {
     type?: string;
     placeholder?: string;
     label?: string;
+    subLabel?: string;
     containerClassName?: string;
     labelClassName?: string;
     inputClassName?: string;
