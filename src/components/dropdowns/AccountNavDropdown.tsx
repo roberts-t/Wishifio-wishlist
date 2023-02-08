@@ -38,6 +38,7 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
                         <div className="px-1 py-1">
                             <Menu.Item>
                                 {({ active }) => (
+                                    <a href="/wishlists">
                                     <button
                                         className={`${
                                             active ? 'bg-sky-500 text-white' : 'text-gray-900'
@@ -46,6 +47,7 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
                                         <BsGift className="mr-1.5" />
                                         My wishlists
                                     </button>
+                                    </a>
                                 )}
                             </Menu.Item>
                             <Menu.Item>
