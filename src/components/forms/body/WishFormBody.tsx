@@ -19,18 +19,22 @@ export const WishFormBody = () => {
             />
             <WishField
                 name="url"
-                label="Website containing more info"
+                label="Website"
+                subLabel="Website where you can buy this wish or find more information about it"
                 placeholder="https://example.com/"
             />
             <WishField
                 name="price"
-                label="Price or price range"
+                label="Price"
+                subLabel="You can enter a precise price, a range or short custom text like 'Free'"
+                required={true}
                 placeholder="e.g. $100; 100€-200€; Free etc."
             />
             <FormFileUpload
                 name="image"
                 label="Wish image"
-                labelClassName="text-gray-800 font-semibold"
+                subLabel="Click on the button below to upload an image"
+                labelClassName="text-gray-800 font-semibold text-center"
                 image={true}
                 customLook={true}
                 fileValidation={imageValidation}
@@ -42,21 +46,22 @@ export const WishFormBody = () => {
                 label="Notes"
                 placeholder="Enter any notes you have about this wish"
                 tag="textarea"
-                inputClassName="border-gray-300 border-2 rounded px-4 py-2 w-full h-full"
+                inputClassName="border-2 rounded px-4 py-2 w-full h-full"
             />
         </>
     );
 }
 
-const WishField = ({name, label, placeholder, required, containerClassName, tag, inputClassName}: WishFieldProps) => {
+const WishField = ({name, label, placeholder, required, containerClassName, tag, inputClassName, subLabel}: WishFieldProps) => {
     return (
         <FormInput
             name={name}
             label={label}
             tag={tag}
+            subLabel={subLabel}
             placeholder={placeholder}
             required={required || false}
-            inputClassName={inputClassName || "border-gray-300 border-2 rounded px-4 py-2 w-full"}
+            inputClassName={inputClassName || "border-2 rounded px-4 py-2 w-full"}
             labelClassName="text-gray-800 font-semibold"
             containerClassName={containerClassName || "flex flex-col gap-y-1"}
         />
@@ -71,4 +76,5 @@ interface WishFieldProps {
     containerClassName?: string;
     tag?: string;
     inputClassName?: string;
+    subLabel?: string;
 }
