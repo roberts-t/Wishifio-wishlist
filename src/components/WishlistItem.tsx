@@ -7,6 +7,7 @@ import { api } from "../config/request";
 import { deleteWishlistErrors, processServerErrors } from "../config/serverErrors";
 import {ConfirmModal} from "./modals/ConfirmModal";
 import {GeneralErrorMsg} from "./GeneralErrorMsg";
+import { Link } from "react-router-dom";
 
 export const WishlistItem: React.FC<WishlistItemProps> = (props) => {
     const [generalError, setGeneralError] = React.useState<string | null>(null);
@@ -41,7 +42,7 @@ export const WishlistItem: React.FC<WishlistItemProps> = (props) => {
         <div className="flex flex-row shadow bg-white">
             <div className="p-3 bg-gray-200 flex-shrink-0 flex items-center">
                 <img
-                    src={"http://localhost:5000" + props.item.imageUrl}
+                    src={process.env.REACT_APP_SERVER_URL + props.item.imageUrl}
                     className="w-64 h-48 rounded object-cover"
                     alt="Product"
                 />
@@ -71,9 +72,11 @@ export const WishlistItem: React.FC<WishlistItemProps> = (props) => {
                     }
                     { props.isOwner && (
                         <>
-                            <button className="border-gray-700 border-2 rounded px-7 py-2.5 text-dark flex flex-row font-semibold justify-center items-center hover:bg-dark hover:text-white hover:border-dark transition gap-x-1">
+                            <Link
+                                to={`/wishlist/${props.wishlistHash}/edit/${props.item.id}`}
+                                className="border-gray-700 border-2 rounded px-7 py-2.5 text-dark flex flex-row font-semibold justify-center items-center hover:bg-dark hover:text-white hover:border-dark transition gap-x-1">
                                 <MdOutlineCreate className="text-lg" /> Edit
-                            </button>
+                            </Link>
                             <button onClick={handleClickDelete} className="border-red-500 text-red-500 border-2 rounded px-4 py-2.5 text-dark flex flex-row font-semibold justify-center items-center hover:bg-red-500 hover:text-white transition gap-x-1">
                                 {isDeleting ?
                                     <CgSpinner className="animate-spin text-lg" /> :

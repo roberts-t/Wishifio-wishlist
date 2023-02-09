@@ -50,7 +50,7 @@ export const Wishlists = () => {
                     hash={wishlist.hash}
                     title={wishlist.title}
                     description={wishlist.description}
-                    wishlistImage={"http://localhost:5000" + wishlist.imageUrl}
+                    wishlistImage={process.env.REACT_APP_SERVER_URL + wishlist.imageUrl}
                     deleteWishlist={removeWishlist}
                     wishlistHash={wishlist.hash}
                 />

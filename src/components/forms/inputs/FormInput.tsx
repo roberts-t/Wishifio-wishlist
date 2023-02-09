@@ -27,7 +27,7 @@ export const FormInput: React.FC<TextInputProps> = (props) => {
                 name={props.name || props.id}
                 placeholder={props.placeholder}
                 type={props.type || "text"}
-                className={props.inputClassName + " " + (meta.touched && meta.error ? " border-red-500 focus:border-red-500 focus:ring-red-500" : ((props.borderClassName) || " border-gray-400") + " focus:border-sky-500 focus:ring-sky-500")}
+                className={props.inputClassName + " " + (meta.touched && meta.error ? " border-red-500 focus:border-red-500 focus:ring-red-500" : ((props.borderClassName) || " border-gray-400") + " focus:border-sky-500 focus:ring-sky-500 outline-none")}
             />
             {meta.touched && meta.error &&
                 <div className="text-red-500 text-sm">{meta.error}</div>
