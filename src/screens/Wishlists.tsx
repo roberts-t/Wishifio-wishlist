@@ -4,6 +4,7 @@ import { api } from '../config/request';
 import { Page } from "./Page";
 import { ReactComponent as WishlistsEmpty } from "../assets/vectors/empty-wishlists.svg";
 import { WishlistListItemPlaceholder } from "../components/placeholders/loading/WishlistListItemPlaceholder";
+import { CreateWishListRedirectButton} from "../components/buttons/CreateWishListRedirect";
 
 export const Wishlists = () => {
 
@@ -41,6 +42,7 @@ export const Wishlists = () => {
                     <p className="text-gray-700 text-xl font-bold">
                         Currently you do not have any wishlists :(
                     </p>
+                    <CreateWishListRedirectButton />
                 </div>
             )
         } else { // Wishlists done loading and some wishlists exist
