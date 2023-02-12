@@ -9,6 +9,7 @@ import { AddWish } from './screens/AddWish';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { AuthContext, AuthContextType } from './context/AuthContext';
 import { EditWish } from "./screens/EditWish";
+import { NotFound } from "./screens/NotFound";
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
             <Route path="wishlist/:hash" element={<Wishlist />} />
             <Route path="wishlist/:hash/add" element={<AddWish />} />
             <Route path="wishlist/:hash/edit/:id" element={<EditWish />} />
-            <Route path="*" element={<div>404</div>} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
   );
 }
