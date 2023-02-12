@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Page } from "./Page";
-import { AddWishForm } from "../components/forms/AddWishForm";
 import { EditWishForm } from "../components/forms/EditWishForm";
 import { api } from "../config/request";
 
@@ -34,9 +33,9 @@ export const EditWish = () => {
                 </div>
             </div>
             <div className="bg-neutral py-5 flex-auto">
-                <div className="container mx-auto px-20">
+                <div className="container mx-auto lg:px-20">
                     <div className="">
-                        { wish && <EditWishForm hash={hash} wish={wish} /> }
+                        { wish && <EditWishForm wishlistHash={hash} wish={wish} /> }
                     </div>
                 </div>
             </div>

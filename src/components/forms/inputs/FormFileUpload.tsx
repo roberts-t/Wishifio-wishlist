@@ -7,7 +7,7 @@ export const FormFileUpload: React.FC<FileUploadProps> = (props) => {
     // Extract the value from the field, value will be controlled manually
     const {value, ...fieldNoValue} = field;
     const hiddenFileInput = useRef<HTMLInputElement>(null);
-    const [file, setFile] = useState('');
+    const [file, setFile] = useState(props.initialValue || '');
 
     const imageAcceptTypes = [
         'image/png',
@@ -122,5 +122,6 @@ interface FileUploadProps {
     required?: boolean;
     image?: boolean;
     acceptedFileTypes?: string[];
+    initialValue?: string;
     fileValidation?: (file: File) => string | boolean;
 }

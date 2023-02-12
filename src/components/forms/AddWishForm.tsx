@@ -27,7 +27,7 @@ export const AddWishForm: React.FC<AddWishFormProps> = (props) => {
 
         api.post(`/wishlist/${props.hash}/item/create`, formData,
             {headers: {'Content-Type': 'multipart/form-data'}
-        }).then((res) => {
+        }).then(() => {
             actions.setSubmitting(false);
             navigate(`/wishlist/${props.hash}`);
         }).catch((err) => {
@@ -40,7 +40,7 @@ export const AddWishForm: React.FC<AddWishFormProps> = (props) => {
     }
 
     return (
-        <div className="px-80 mt-5">
+        <div className="2xl:px-72 xl:px-52 sm:px-10 px-4 mt-5">
             <FormikForm
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -48,7 +48,7 @@ export const AddWishForm: React.FC<AddWishFormProps> = (props) => {
                 submitText="Save to wishlist"
                 submitClassName="my-5 cursor-pointer bg-sky-500 mx-auto block text-white font-semibold px-16 py-2 rounded-md hover:bg-sky-600 transition duration-200 focus:border-sky-600 focus:ring-sky-600 focus:outline-none focus:ring-2"
             >
-                    <div className=" bg-white border rounded p-10 grid grid-cols-2 gap-4">
+                    <div className=" bg-white border rounded sm:p-10 p-6 grid md:grid-cols-2 grid-cols-1 gap-5">
                         <WishFormBody />
                     </div>
                 {generalError && <div className="mt-2 text-red-500 text-center font-semibold">{generalError}</div>}

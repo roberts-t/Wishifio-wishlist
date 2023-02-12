@@ -16,7 +16,6 @@ export const Wishlist = () => {
 
     const getWishlist = () => {
         api.get(`/wishlist/${hash}`).then((res) => {
-            console.log(res.data);
             setWishlist(res.data.wishlist);
             setIsOwner(res.data.isOwner);
         }).catch((err) => {
@@ -43,7 +42,7 @@ export const Wishlist = () => {
                     <div className="container mx-auto px-20">
                         <div className="flex flex-col items-center justify-center py-12">
                             <img
-                                src={"http://localhost:5000" + wishlist.imageUrl}
+                                src={process.env.REACT_APP_SERVER_URL + wishlist.imageUrl}
                                 alt="Wishlist cover"
                                 className="w-24 h-24 rounded-lg object-cover"
                             />

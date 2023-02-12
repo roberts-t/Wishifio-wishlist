@@ -3,7 +3,7 @@ import React from "react";
 import { FormFileUpload } from "../inputs/FormFileUpload";
 import { imageValidation } from "../../../helpers/validationHelpers";
 
-export const WishFormBody = () => {
+export const WishFormBody: React.FC<WishFormBodyProps> = (props) => {
     return (
         <>
             <WishField
@@ -37,6 +37,7 @@ export const WishFormBody = () => {
                 labelClassName="text-gray-800 font-semibold text-center"
                 image={true}
                 customLook={true}
+                initialValue={props.initialImage}
                 fileValidation={imageValidation}
                 customSize="48"
                 containerClassName="flex flex-col gap-y-2 items-center justify-center"
@@ -66,6 +67,10 @@ const WishField = ({name, label, placeholder, required, containerClassName, tag,
             containerClassName={containerClassName || "flex flex-col gap-y-1"}
         />
     );
+}
+
+interface WishFormBodyProps {
+    initialImage?: string;
 }
 
 interface WishFieldProps {
