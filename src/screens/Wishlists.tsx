@@ -5,6 +5,7 @@ import { Page } from "./Page";
 import { ReactComponent as WishlistsEmpty } from "../assets/vectors/empty-wishlists.svg";
 import { WishlistListItemPlaceholder } from "../components/placeholders/loading/WishlistListItemPlaceholder";
 import { CreateWishListRedirectButton} from "../components/buttons/CreateWishListRedirect";
+import { processGenericServerError } from "../config/serverErrors";
 
 export const Wishlists = () => {
 
@@ -16,8 +17,8 @@ export const Wishlists = () => {
             setWishlists(res.data);
             setWishlistsLoading(false)
         }).catch((err) => {
-            console.log(err);
             setWishlistsLoading(false);
+            processGenericServerError(err);
         });
     }
 
