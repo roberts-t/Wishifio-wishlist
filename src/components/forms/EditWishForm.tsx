@@ -9,7 +9,7 @@ import { GeneralErrorMsg } from "../GeneralErrorMsg";
 
 export const EditWishForm: React.FC<EditWishFormProps> = ({ wish, wishlistHash }) => {
     const navigate = useNavigate();
-    const [generalError, setGeneralError] = React.useState<string | null>('test');
+    const [generalError, setGeneralError] = React.useState<string | null>(null);
 
     const initialValues = {
         name: wish?.name || '',
