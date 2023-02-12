@@ -33,6 +33,20 @@
     font-weight: 700;
     src: url('assets/fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
 }
+/* Montserrat-ExtraBold-800 */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    src: url('assets/fonts/montserrat/Montserrat-ExtraBold.ttf') format('truetype');
+}
+/* Montserrat-Black-900 */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 900;
+    src: url('assets/fonts/montserrat/Montserrat-Black.ttf') format('truetype');
+}
 
 @tailwind base;
 @tailwind components;
