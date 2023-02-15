@@ -5,6 +5,7 @@ import { Home } from './screens/Home';
 import { MakeWishlist } from './screens/MakeWishlist';
 import { Wishlists } from './screens/Wishlists';
 import { Wishlist } from './screens/Wishlist';
+import { About } from './screens/About';
 import { AddWish } from './screens/AddWish';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { AuthContext, AuthContextType } from './context/AuthContext';
@@ -30,6 +31,14 @@ function App() {
                 element={
                     <ProtectedRoute user={user} isAuthenticated={isAuthenticated} isLoading={isLoading}>
                         <Wishlists />
+                    </ProtectedRoute>
+                }
+            />
+            <Route
+                path="about"
+                element={
+                    <ProtectedRoute user={user} isAuthenticated={isAuthenticated} isLoading={isLoading}>
+                        <About />
                     </ProtectedRoute>
                 }
             />

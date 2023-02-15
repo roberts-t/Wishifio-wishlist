@@ -13,6 +13,10 @@ module.exports = {
       },
       height: {
         'wishlist-item': '132px',
+        'about': '601px',
+      },
+      width: {
+        'about': '420px',
       },
       backgroundColor: {
         'neutral': '#f5f6f8',
