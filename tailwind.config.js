@@ -14,9 +14,15 @@ module.exports = {
       height: {
         'wishlist-item': '132px',
         'about': '601px',
+        'aboutIcon3': '299px',
+        'aboutIcon2': '290px',
+        'aboutIcon1': '321px',
       },
       width: {
         'about': '420px',
+        'aboutIcon3': '555px',
+        'aboutIcon2': '288px',
+        'aboutIcon1': '398px',
       },
       backgroundColor: {
         'neutral': '#f5f6f8',

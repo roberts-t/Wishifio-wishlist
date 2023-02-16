@@ -34,54 +34,50 @@ export const About = () => {
                     </div>
                 </div>
                 {/* Icons, info */}
-                <div className="flex flex-wrap">
+                <div className="grid grid-cols-2 place-items-center gap-12">
                     {/* What is WishBox? */}
-                    <div className="w-1/2 bg-sky-500 h-80 text-white text-center pt-5">
+                    <div className="ml-14 mr-4 rounded-3xl text-4xl bg-sky-500 h-80 text-white text-center pt-5">
                         <div className="text-4xl">
                             What is WishBox?
                         </div>
                         <div className="text-sm text-center ml-20 mr-20 mt-4 mb-4">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.                        
                         </div>
                     </div>
                     {/* first icon */}
-                    <div className="w-1/2 items-center bg-[url('../public/AboutIcon1.png')] bg-center bg-no-repeat"></div>
+                    <div className="mb-2 w-1/2 items-center w-aboutIcon1 h-aboutIcon1 bg-[url('../public/aboutIcon1.svg')] bg-center bg-no-repeat"></div>
                     {/* second icon */}
-                    <div className="w-1/2 items-center bg-[url('../public/AboutIcon2.png')] bg-center bg-no-repeat -mt-3.5 -ml-2 mr-2"></div>
+                    <div className="w-1/2 items-center w-aboutIcon2 h-aboutIcon2 bg-[url('../public/aboutIcon2.svg')] bg-center bg-no-repeat -mt-3.5 -ml-2 mr-2"></div>
                     {/* What is our goal? */}
-                    <div className="w-1/2 text-4xl bg-sky-500 h-80 text-white text-center pt-5">
+                    <div className="mr-14 ml-4 rounded-3xl text-4xl bg-sky-500 h-80 text-white text-center pt-5">
                         <div className="text-4xl">
                             What is our goal?
                         </div>
                         <div className="text-sm text-center ml-20 mr-20 mt-4 mb-4">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.                        
                         </div>
                     </div>
                     {/* Who are we? */}
-                    <div className="w-1/2 text-4xl bg-sky-500 h-80 text-white text-center pt-5">
+                    <div className="ml-14 mr-4 rounded-3xl text-4xl bg-sky-500 h-80 text-white text-center pt-5">
                         <div className="text-4xl">
                             Who are we?
                         </div>
                         <div className="text-sm text-center ml-20 mr-20 mt-4 mb-4">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                         </div>
                     </div>
                     {/* third icon */}
-                    <div className="w-1/2 items-center bg-[url('../public/AboutIcon2.png')] bg-center bg-no-repeat -mt-3.5 " />
+                    <div className="w-1/2 w-aboutIcon3 h-aboutIcon3 bg-[url('../public/aboutIcon3.svg')] bg-center bg-no-repeat -mt-3.5 " />
                 </div>
                 {/* email */}
-                <div className="grid grid-cols-4">
-                <div/> {/* blank grid item */}
-                    <div>
-                        <AiOutlineMail className="w-80 h-80 text-sky-500" />
-                    </div>
-                    <div className="w-96">
-                        <h1 className="text-4xl text-center ml-20 mr-20 mt-12 mb-4">Get in touch with us</h1>
-                        <div className="text-base text-center ml-20 mr-20 mt-4 mb-4">
+                <div className="grid grid-cols-2 place-items-center">
+                        <div className="mt-10 w-96 h-96 bg-[url('../public/aboutIconMail.svg')] bg-center bg-no-repeat" />
+                    <div className="mr-80">
+                        <h1 className="text-4xl ml-20 mr-20 mt-12 mb-4">Get in touch with us</h1>
+                        <div className="text-base ml-20 mr-20 mt-4 mb-4">
                             Email your questions or report any problems to <br /> <h1 className="font-bold">wishboxsupport@gmail.com</h1> We will try to review or answer as soon as possible
                         </div>
                     </div>
-                    <div /> {/* blank grid item */}
                 </div>
             </div>
         </Page>

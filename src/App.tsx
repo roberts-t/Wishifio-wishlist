@@ -34,14 +34,7 @@ function App() {
                     </ProtectedRoute>
                 }
             />
-            <Route
-                path="about"
-                element={
-                    <ProtectedRoute user={user} isAuthenticated={isAuthenticated} isLoading={isLoading}>
-                        <About />
-                    </ProtectedRoute>
-                }
-            />
+            <Route path="about" element={<About />}/>
             <Route path="wishlist/:hash" element={<Wishlist />} />
             <Route path="wishlist/:hash/add" element={<AddWish />} />
             <Route path="wishlist/:hash/edit/:id" element={<EditWish />} />
