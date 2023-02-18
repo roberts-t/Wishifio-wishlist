@@ -24,6 +24,14 @@ export const processServerErrors = (err: any, actions: any, setGeneral: (msg: st
     }
     return true;
 }
+
+export const processGenericServerError = (err: any) => {
+    const error = err?.response?.data?.errorCode;
+    if (error == "NO_PERMISSION") {
+        window.location.href = "/";
+    }
+}
+
 export const signupErrors = {
     'EMAIL_REQ': {
         field: 'email',
