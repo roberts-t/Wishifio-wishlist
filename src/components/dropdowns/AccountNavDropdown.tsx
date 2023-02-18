@@ -11,6 +11,7 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
     const logOut = () => {
         api.get('/logout').then(async() => {
             await props.getAuthStatus();
+            window.location.href = "/";
         }).catch((err) => {
             console.log(err);
         });
