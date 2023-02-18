@@ -7,11 +7,13 @@ import { api } from '../config/request';
 import { ReactComponent as EmptyWishlist } from '../assets/vectors/empty-wishlist.svg';
 import { Page } from "./Page";
 import {AuthContext, AuthContextType} from "../context/AuthContext";
+import { ShareWishlistModal } from "../components/modals/ShareWishlistModal";
 
 export const Wishlist = () => {
     const { hash } = useParams();
     const [wishlist, setWishlist] = useState<any>(null);
     const [isOwner, setIsOwner] = useState<boolean>(false);
+    const [showShareModal, setShowShareModal] = useState<boolean>(false);
     const { user } = useContext(AuthContext) as AuthContextType;
 
     const getWishlist = () => {
@@ -29,6 +31,22 @@ export const Wishlist = () => {
             ...wishlist,
             items: newItems
         });
+    }
+
+    const setNewVisibility = (visibility: string) => {
+        setWishlist((prevWishlist: any) => ({
+            ...prevWishlist,
+            settings: {
+                ...prevWishlist.settings,
+                visibility: visibility
+            }
+        }));
+    }
+
+    const getUppercaseVisibility = () => {
+        const visibility = wishlist?.settings?.visibility;
+        if (!visibility) return 'Private';
+        return visibility.charAt(0).toUpperCase() + visibility.slice(1);
     }
 
     useEffect(() => {
@@ -60,22 +78,30 @@ export const Wishlist = () => {
                     </div>
                     <div className="bg-neutral py-5 flex-auto">
                         <div className="container mx-auto px-20">
-                            <div className="flex flex-row gap-x-4 pt-6 pb-2">
-                                <button className="bg-dark hover:bg-dark-hover transition text-white px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1">
-                                    <IoMdSettings className="text-lg" /> Settings
-                                </button>
-                                <button className="bg-dark hover:bg-dark-hover transition text-white px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1">
-                                    <BiShare className="text-lg" /> Share
-                                </button>
-                                <Link
-                                    className="border-gray-600 transition hover:bg-sky-500 hover:text-white hover:border-sky-500 border-2 text-dark transition px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1"
-                                    to={`/wishlist/${hash}/add`}
-                                >
-                                    <IoMdAddCircleOutline className="text-lg" />
-                                    Add a wish
-                                </Link>
-                            </div>
-                            <p className="pb-6 text-gray-600">Visibility: <span>{wishlist.settings.isShared ? "Shared" : "Private"}</span></p>
+                            {isOwner && (
+                                <>
+                                    <div className="flex flex-row gap-x-4 pt-6 pb-2">
+                                        <button className="bg-dark hover:bg-dark-hover transition text-white px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1">
+                                            <IoMdSettings className="text-lg" /> Settings
+                                        </button>
+                                        <button
+                                            className="bg-dark hover:bg-dark-hover transition text-white px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1"
+                                            type="button"
+                                            onClick={() => setShowShareModal(true)}
+                                        >
+                                            <BiShare className="text-lg" /> Share
+                                        </button>
+                                        <Link
+                                            className="border-gray-600 transition hover:bg-sky-500 hover:text-white hover:border-sky-500 border-2 text-dark transition px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1"
+                                            to={`/wishlist/${hash}/add`}
+                                        >
+                                            <IoMdAddCircleOutline className="text-lg" />
+                                            Add a wish
+                                        </Link>
+                                    </div>
+                                    <p className="pb-6 text-gray-600">Visibility: <span>{getUppercaseVisibility()}</span></p>
+                                </>
+                            )}
                             <h3 className="text-gray-700 font-medium text-xl my-2.5">Wishlist wishes</h3>
                             <div className="grid grid-cols-1 gap-y-6 mb-8">
                                 {wishlist.items.length > 0 ? (
@@ -99,6 +125,13 @@ export const Wishlist = () => {
                             </div>
                         </div>
                     </div>
+                    <ShareWishlistModal
+                        isOpen={showShareModal}
+                        setIsOpen={setShowShareModal}
+                        wishlistHash={wishlist.hash}
+                        currentPrivacyOption={wishlist.settings.visibility}
+                        setWishlistPrivacy={setNewVisibility}
+                    />
                 </>
             )}
         </Page>
