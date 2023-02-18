@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Page } from "./Page";
 import { EditWishForm } from "../components/forms/EditWishForm";
 import { api } from "../config/request";
+import { processGenericServerError } from "../config/serverErrors";
 
 export const EditWish = () => {
     const { hash, id } = useParams();
@@ -12,7 +13,7 @@ export const EditWish = () => {
         api.get(`/wishlist/${hash}/item/${id}`).then((res) => {
             setWish(res.data);
         }).catch((err) => {
-            console.log(err);
+            processGenericServerError(err);
         });
     }
 

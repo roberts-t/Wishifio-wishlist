@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdSettings, IoMdAddCircleOutline } from 'react-icons/io';
 import { WishlistItem } from '../components/WishlistItem';
 import { BiShare } from 'react-icons/bi';
@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import { api } from '../config/request';
 import { ReactComponent as EmptyWishlist } from '../assets/vectors/empty-wishlist.svg';
 import { Page } from "./Page";
-import {AuthContext, AuthContextType} from "../context/AuthContext";
+import { processGenericServerError } from "../config/serverErrors";
 import { ShareWishlistModal } from "../components/modals/ShareWishlistModal";
 
 export const Wishlist = () => {
@@ -14,14 +14,13 @@ export const Wishlist = () => {
     const [wishlist, setWishlist] = useState<any>(null);
     const [isOwner, setIsOwner] = useState<boolean>(false);
     const [showShareModal, setShowShareModal] = useState<boolean>(false);
-    const { user } = useContext(AuthContext) as AuthContextType;
 
     const getWishlist = () => {
         api.get(`/wishlist/${hash}`).then((res) => {
             setWishlist(res.data.wishlist);
             setIsOwner(res.data.isOwner);
         }).catch((err) => {
-            console.log(err);
+            processGenericServerError(err);
         });
     }
 

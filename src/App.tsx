@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import React, { useContext } from 'react';
+import React from 'react';
 import './App.css';
 import { Home } from './screens/Home';
 import { MakeWishlist } from './screens/MakeWishlist';
@@ -7,36 +7,34 @@ import { Wishlists } from './screens/Wishlists';
 import { Wishlist } from './screens/Wishlist';
 import { AddWish } from './screens/AddWish';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { AuthContext, AuthContextType } from './context/AuthContext';
 import { EditWish } from "./screens/EditWish";
 import { NotFound } from "./screens/NotFound";
 
 function App() {
-
-    const { isAuthenticated, isLoading, user } = useContext(AuthContext) as AuthContextType;
 
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route
                 path="wishlist/create"
-                element={
-                    <ProtectedRoute user={user} isAuthenticated={isAuthenticated} isLoading={isLoading}>
-                        <MakeWishlist />
-                    </ProtectedRoute>
-                }
+                element={<ProtectedRoute screen={<MakeWishlist />} />}
             />
             <Route
                 path="wishlists"
-                element={
-                    <ProtectedRoute user={user} isAuthenticated={isAuthenticated} isLoading={isLoading}>
-                        <Wishlists />
-                    </ProtectedRoute>
-                }
+                element={<ProtectedRoute screen={<Wishlists />} />}
             />
-            <Route path="wishlist/:hash" element={<Wishlist />} />
-            <Route path="wishlist/:hash/add" element={<AddWish />} />
-            <Route path="wishlist/:hash/edit/:id" element={<EditWish />} />
+            <Route
+                path="wishlist/:hash"
+                element={<ProtectedRoute screen={<Wishlist />} />}
+            />
+            <Route
+                path="wishlist/:hash/add"
+                element={<ProtectedRoute screen={<AddWish />} />}
+            />
+            <Route
+                path="wishlist/:hash/edit/:id"
+                element={<ProtectedRoute screen={<EditWish />} />}
+            />
             <Route path="*" element={<NotFound />} />
         </Routes>
   );
