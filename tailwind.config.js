@@ -11,7 +11,11 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 4s linear infinite',
       },
+      width: {
+        '112': '28rem',
+      },
       height: {
+        '112': '28rem',
         'wishlist-item': '132px',
         'about': '450px',
       },
@@ -31,6 +35,9 @@ module.exports = {
       },
       colors: {
         'success': '#4BB543',
+      },
+      fontSize: {
+        '10xl': '10rem',
       }
     },
   },

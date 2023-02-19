@@ -63,7 +63,8 @@ export const CreateWishlistForm = () => {
                 <FormFileUpload
                     name="image"
                     label="Wishlist image"
-                    labelClassName="text-gray-700 font-bold"
+                    subLabel="Click on the button below to upload an image"
+                    labelClassName="text-gray-700 font-bold text-center"
                     image={true}
                     fileValidation={imageValidation}
                     customLook={true}
@@ -91,7 +92,7 @@ const WishlistField = ({ name, label, placeholder, tag }: WishlistFieldProps) =>
             placeholder={placeholder}
             labelClassName="text-gray-700 font-bold"
             containerClassName="flex flex-col gap-y-2 justify-center"
-            inputClassName="w-full border-2 border-gray-300 rounded-md p-2 focus:border-sky-500 focus:outline-none transition"
+            inputClassName="w-full border-2 rounded-md p-2 focus:border-sky-500 focus:outline-none transition"
             required={true}
         />
     );

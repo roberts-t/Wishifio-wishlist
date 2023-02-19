@@ -5,6 +5,7 @@ import { MdOutlineCreate } from 'react-icons/md';
 import { HiOutlineTrash } from 'react-icons/hi';
 import { api } from '../../config/request';
 import { ConfirmModal } from '../modals/ConfirmModal';
+import { processGenericServerError } from "../../config/serverErrors";
 
 export const WishlistListItemDropdown: React.FC<WishlistListItemDropdownProps> = (props) => {
 
@@ -14,7 +15,7 @@ export const WishlistListItemDropdown: React.FC<WishlistListItemDropdownProps> =
         api.delete(`/wishlist/${props.wishlistHash}`).then(async() => {
             props.deleteWishlist(props.wishlistHash);
         }).catch((err) => {
-            console.log(err);
+            processGenericServerError(err);
         });
     }
 

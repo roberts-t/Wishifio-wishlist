@@ -8,13 +8,18 @@ export const FormInput: React.FC<TextInputProps> = (props) => {
     return (
         <div className={props.containerClassName}>
             {props.label &&
-                <label
-                    className={props.labelClassName}
-                    htmlFor={props.id || props.name}
-                >
-                    {props.label}
-                    {props.required && <span className="text-red-500 ml-0.5 text-sm">*</span>}
-                </label>
+                <>
+                    <label
+                        className={props.labelClassName}
+                        htmlFor={props.id || props.name}
+                    >
+                        {props.label}
+                        {props.required && <span className="text-red-500 ml-0.5 text-sm">*</span>}
+                        {props.subLabel && <span className="block leading-none text-sm font-normal text-gray-500 mb-1.5">
+                            {props.subLabel}
+                        </span>}
+                    </label>
+                </>
             }
             <CustomInput
                 {...field}
@@ -22,7 +27,7 @@ export const FormInput: React.FC<TextInputProps> = (props) => {
                 name={props.name || props.id}
                 placeholder={props.placeholder}
                 type={props.type || "text"}
-                className={props.inputClassName + " " + (meta.touched && meta.error ? " border-red-500 focus:border-red-500 focus:ring-red-500" : ((props.borderClassName) || " border-gray-400") + " focus:border-sky-500 focus:ring-sky-500")}
+                className={props.inputClassName + " " + (meta.touched && meta.error ? " border-red-500 focus:border-red-500 focus:ring-red-500" : ((props.borderClassName) || " border-gray-400") + " focus:border-sky-500 focus:ring-sky-500 outline-none")}
             />
             {meta.touched && meta.error &&
                 <div className="text-red-500 text-sm">{meta.error}</div>
@@ -38,6 +43,7 @@ interface TextInputProps {
     type?: string;
     placeholder?: string;
     label?: string;
+    subLabel?: string;
     containerClassName?: string;
     labelClassName?: string;
     inputClassName?: string;

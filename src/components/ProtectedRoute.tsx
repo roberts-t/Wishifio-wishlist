@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { ReactElement, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { LoadingPage } from '../screens/LoadingPage';
+import { AuthContext, AuthContextType } from "../context/AuthContext";
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = (props) => {
+export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({screen}) => {
+
+    const { isLoading, user } = useContext(AuthContext) as AuthContextType;
+
     const renderPage = () => {
-        if (props.isLoading) {
+        if (isLoading) {
             return <LoadingPage />
-        } else if (!props.user) {
+        } else if (!user) {
             return <Navigate to="/" replace />
         }
-        return props.children;
+        return screen;
     }
 
     return renderPage();
 };
 
 interface ProtectedRouteProps {
-    user: any;
-    isAuthenticated: boolean;
-    isLoading: boolean;
-    children: any;
+    screen: ReactElement;
 }

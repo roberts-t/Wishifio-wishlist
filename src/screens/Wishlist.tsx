@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdSettings, IoMdAddCircleOutline } from 'react-icons/io';
 import { WishlistItem } from '../components/WishlistItem';
 import { BiShare } from 'react-icons/bi';
@@ -6,21 +6,19 @@ import { Link, useParams } from 'react-router-dom';
 import { api } from '../config/request';
 import { ReactComponent as EmptyWishlist } from '../assets/vectors/empty-wishlist.svg';
 import { Page } from "./Page";
-import {AuthContext, AuthContextType} from "../context/AuthContext";
+import { processGenericServerError } from "../config/serverErrors";
 
 export const Wishlist = () => {
     const { hash } = useParams();
     const [wishlist, setWishlist] = useState<any>(null);
     const [isOwner, setIsOwner] = useState<boolean>(false);
-    const { user } = useContext(AuthContext) as AuthContextType;
 
     const getWishlist = () => {
         api.get(`/wishlist/${hash}`).then((res) => {
-            console.log(res.data);
             setWishlist(res.data.wishlist);
             setIsOwner(res.data.isOwner);
         }).catch((err) => {
-            console.log(err);
+            processGenericServerError(err);
         });
     }
 
@@ -43,7 +41,7 @@ export const Wishlist = () => {
                     <div className="container mx-auto px-20">
                         <div className="flex flex-col items-center justify-center py-12">
                             <img
-                                src={"http://localhost:5000" + wishlist.imageUrl}
+                                src={process.env.REACT_APP_SERVER_URL + wishlist.imageUrl}
                                 alt="Wishlist cover"
                                 className="w-24 h-24 rounded-lg object-cover"
                             />
@@ -59,7 +57,7 @@ export const Wishlist = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="bg-neutral py-5">
+                    <div className="bg-neutral py-5 flex-auto">
                         <div className="container mx-auto px-20">
                             <div className="flex flex-row gap-x-4 pt-6 pb-2">
                                 <button className="bg-dark hover:bg-dark-hover transition text-white px-6 py-2 shadow-sm font-medium rounded-sm flex flex-row justify-center items-center gap-x-1">
