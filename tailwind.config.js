@@ -17,6 +17,10 @@ module.exports = {
       height: {
         '112': '28rem',
         'wishlist-item': '132px',
+        'about': '450px',
+      },
+      width: {
+        'about': '420px',
       },
       backgroundColor: {
         'neutral': '#f5f6f8',

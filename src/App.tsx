@@ -5,6 +5,7 @@ import { Home } from './screens/Home';
 import { MakeWishlist } from './screens/MakeWishlist';
 import { Wishlists } from './screens/Wishlists';
 import { Wishlist } from './screens/Wishlist';
+import { About } from './screens/About';
 import { AddWish } from './screens/AddWish';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { EditWish } from "./screens/EditWish";
@@ -35,6 +36,7 @@ function App() {
                 path="wishlist/:hash/edit/:id"
                 element={<ProtectedRoute screen={<EditWish />} />}
             />
+            <Route path="about" element={<About />}/>
             <Route path="*" element={<NotFound />} />
         </Routes>
   );
