@@ -26,7 +26,7 @@ function App() {
             />
             <Route
                 path="wishlist/:hash"
-                element={<ProtectedRoute screen={<Wishlist />} />}
+                element={<Wishlist />}
             />
             <Route
                 path="wishlist/:hash/add"
