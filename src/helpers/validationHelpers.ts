@@ -28,3 +28,16 @@ export const wishValidationSchema = {
         .string()
         .max(500, 'Note must be at most 500 characters')
 }
+
+export const wishlistValidationSchema = {
+    title: yup
+        .string()
+        .required('Title is required')
+        .max(50, 'Title must be less than 50 characters')
+        .min(1, 'Title must be at least 1 characters'),
+    description: yup
+        .string()
+        .required('Description is required')
+        .max(500, 'Description must be less than 500 characters')
+        .min(1, 'Description must be at least 1 characters')
+}

@@ -6,6 +6,7 @@ import { HiOutlineTrash } from 'react-icons/hi';
 import { api } from '../../config/request';
 import { ConfirmModal } from '../modals/ConfirmModal';
 import { processGenericServerError } from "../../config/serverErrors";
+import { Link } from "react-router-dom";
 
 export const WishlistListItemDropdown: React.FC<WishlistListItemDropdownProps> = (props) => {
 
@@ -40,14 +41,15 @@ export const WishlistListItemDropdown: React.FC<WishlistListItemDropdownProps> =
                         <div className="px-1 py-1">
                             <Menu.Item>
                                 {({ active }) => (
-                                    <button
+                                    <Link
+                                        to={`/wishlist/${props.wishlistHash}/edit`}
                                         className={`${
                                             active ? 'bg-sky-500 text-white' : 'text-gray-900'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                     >
                                         <MdOutlineCreate className="mr-0.5" />
                                         Edit
-                                    </button>
+                                    </Link>
                                 )}
                             </Menu.Item>
                             <Menu.Item>
