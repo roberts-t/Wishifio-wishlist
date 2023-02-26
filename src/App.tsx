@@ -10,6 +10,7 @@ import { AddWish } from './screens/AddWish';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { EditWish } from "./screens/EditWish";
 import { NotFound } from "./screens/NotFound";
+import { EditWishlist } from "./screens/EditWishlist";
 
 function App() {
 
@@ -31,6 +32,10 @@ function App() {
             <Route
                 path="wishlist/:hash/add"
                 element={<ProtectedRoute screen={<AddWish />} />}
+            />
+            <Route
+                path="wishlist/:hash/edit"
+                element={<ProtectedRoute screen={<EditWishlist />} />}
             />
             <Route
                 path="wishlist/:hash/edit/:id"
