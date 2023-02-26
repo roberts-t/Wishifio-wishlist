@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Page } from "./Page";
 import { useParams } from "react-router-dom";
-import {AddWishForm} from "../components/forms/AddWishForm";
+import { AddWishForm } from "../components/forms/AddWishForm";
+import { BackButton } from "../components/BackButton";
+import { useNavigate } from "react-router-dom";
 import { api } from "../config/request";
 import { processGenericServerError } from "../config/serverErrors";
 
 export const AddWish = () => {
     const { hash } = useParams();
     const [wishlist, setWishlist] = useState<any>(null);
+    const navigate = useNavigate();
 
     const getWishlist = () => {
         api.get(`/wishlist/${hash}`).then((res) => {
@@ -24,7 +27,8 @@ export const AddWish = () => {
 
     return (
         <Page>
-            <div className="container mx-auto px-20">
+            <div className="container mx-auto px-20 relative">
+                <BackButton label="To wishlist" onClick={() => navigate(`/wishlist/${hash}`)} />
                 <div className="flex flex-col items-center justify-center py-12">
                     <h1 className="text-4xl font-bold text-center">
                         Add a wish to

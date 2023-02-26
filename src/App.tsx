@@ -11,31 +11,36 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import { EditWish } from "./screens/EditWish";
 import { NotFound } from "./screens/NotFound";
 import { Login } from "./screens/Login";
+import { EditWishlist } from "./screens/EditWishlist";
 
 function App() {
 
     return (
         <Routes>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/" element={<Home />} />
             <Route
                 path="wishlist/create"
-                element={<ProtectedRoute screen={<MakeWishlist/>}/>}
+                element={<ProtectedRoute screen={<MakeWishlist />} />}
             />
             <Route
                 path="wishlists"
-                element={<ProtectedRoute screen={<Wishlists/>}/>}
+                element={<ProtectedRoute screen={<Wishlists />} />}
             />
             <Route
                 path="wishlist/:hash"
-                element={<Wishlist/>}
+                element={<Wishlist />}
             />
             <Route
                 path="wishlist/:hash/add"
-                element={<ProtectedRoute screen={<AddWish/>}/>}
+                element={<ProtectedRoute screen={<AddWish />} />}
+            />
+            <Route
+                path="wishlist/:hash/edit"
+                element={<ProtectedRoute screen={<EditWishlist />} />}
             />
             <Route
                 path="wishlist/:hash/edit/:id"
-                element={<ProtectedRoute screen={<EditWish/>}/>}
+                element={<ProtectedRoute screen={<EditWish />} />}
             />
             <Route
                 path="login"
@@ -48,7 +53,7 @@ function App() {
             <Route path="about" element={<About/>}/>
             <Route path="*" element={<NotFound/>}/>
         </Routes>
-    );
+  );
 }
 
 export default App;

@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { HiOutlineLightBulb, HiOutlineViewGridAdd, HiOutlineShare } from 'react-icons/hi';
 import { MdOutlineCreate } from 'react-icons/md';
 import { ReactComponent as OnlineWish } from '../assets/vectors/online-wish.svg';
 import { WishStep } from '../components/WishStep';
 import { Page } from "./Page";
+import { Link } from "react-router-dom";
+import { AuthContext, AuthContextType } from "../context/AuthContext";
 
 export const Home = () => {
+    const { isAuthenticated } = useContext(AuthContext) as AuthContextType;
+
     return (
         <Page>
             <div className="container mx-auto px-20">
@@ -21,7 +25,12 @@ export const Home = () => {
                                 Make a wishlist and share it with your friends and family. They can contribute to your wishlist and make your wishes come true.
                             </p>
                             <div className="flex mt-8">
-                                <button className="text-white px-8 py-2.5 rounded bg-sky-500 hover:bg-sky-600 transition font-semibold text-lg">Get started</button>
+                                <Link
+                                    to={isAuthenticated ? "/wishlist/create" : "/login"}
+                                    className="text-white px-8 py-2.5 rounded bg-sky-500 hover:bg-sky-600 transition font-semibold text-lg"
+                                >
+                                    Get started
+                                </Link>
                             </div>
                         </div>
                         <div className="flex flex-col justify-center">
