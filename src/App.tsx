@@ -10,6 +10,7 @@ import { AddWish } from './screens/AddWish';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { EditWish } from "./screens/EditWish";
 import { NotFound } from "./screens/NotFound";
+import { Login } from "./screens/Login";
 import { EditWishlist } from "./screens/EditWishlist";
 
 function App() {
@@ -41,8 +42,16 @@ function App() {
                 path="wishlist/:hash/edit/:id"
                 element={<ProtectedRoute screen={<EditWish />} />}
             />
-            <Route path="about" element={<About />}/>
-            <Route path="*" element={<NotFound />} />
+            <Route
+                path="login"
+                element={<ProtectedRoute screen={<Login/>} guestOnly={true}/>}
+            />
+            <Route
+                path="signup"
+                element={<ProtectedRoute screen={<Login defaultTab={2} />} guestOnly={true}/>}
+            />
+            <Route path="about" element={<About/>}/>
+            <Route path="*" element={<NotFound/>}/>
         </Routes>
   );
 }

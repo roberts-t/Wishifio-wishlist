@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog } from '@headlessui/react';
-import { SignUpForm } from '../../forms/SignUpForm';
+import { RegisterTabContent } from "./RegisterTabContent";
 
 export const RegisterTab: React.FC<RegisterTabProps> = (props) => {
     return (
@@ -12,16 +12,7 @@ export const RegisterTab: React.FC<RegisterTabProps> = (props) => {
                 Sign up
             </Dialog.Title>
 
-            <SignUpForm />
-            <div className="mt-5 border-t-2 text-center">
-                <p className="text-gray-500 leading-none font-normal mt-3 text-sm">Already have an account?</p>
-                <button
-                    onClick={() => props.setTab(1)}
-                    className="font-semibold leading-none text-blue-400 hover:text-blue-500 transition" type="button"
-                >
-                    Log in now
-                </button>
-            </div>
+            <RegisterTabContent onLoginClick={() => props.setTab(1)} />
         </>
     );
 };
