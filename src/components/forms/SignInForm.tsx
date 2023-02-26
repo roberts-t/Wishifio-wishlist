@@ -7,10 +7,12 @@ import { FormCheckbox } from './inputs/FormCheckbox';
 import { loginErrors } from '../../config/serverErrors';
 import { processServerErrors } from '../../config/serverErrors';
 import { AuthContext, AuthContextType } from '../../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 export const SignInForm: React.FC<SignInFormProps> = (props) => {
     const [generalError, setGeneralError] = React.useState<string | null>(null);
     const { getAuthStatus } = useContext(AuthContext) as AuthContextType;
+    const navigate = useNavigate();
 
     const initialValues = {
         email: '',
@@ -33,9 +35,10 @@ export const SignInForm: React.FC<SignInFormProps> = (props) => {
         setGeneralError(null);
 
         api.post('/login', values).then(async () => {
-            props.closeModal();
+            if (props.closeModal) props.closeModal();
             await getAuthStatus();
             actions.setSubmitting(false);
+            if (props.redirect) navigate(props.redirect);
         }).catch((err) => {
             const serverError = processServerErrors(err, actions, setGeneralError, loginErrors);
             if (!serverError) {
@@ -86,5 +89,6 @@ interface SignInFieldProps {
 }
 
 interface SignInFormProps {
-    closeModal: () => void;
+    closeModal?: () => void;
+    redirect?: string;
 }

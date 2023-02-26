@@ -3,14 +3,16 @@ import { Navigate } from 'react-router-dom';
 import { LoadingPage } from '../screens/LoadingPage';
 import { AuthContext, AuthContextType } from "../context/AuthContext";
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({screen}) => {
+export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({screen, guestOnly}) => {
 
     const { isLoading, user } = useContext(AuthContext) as AuthContextType;
 
     const renderPage = () => {
         if (isLoading) {
             return <LoadingPage />
-        } else if (!user) {
+        } else if (guestOnly && user) {
+            return <Navigate to="/" replace />
+        } else if (!guestOnly && !user) {
             return <Navigate to="/" replace />
         }
         return screen;
@@ -21,4 +23,5 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({screen}) => {
 
 interface ProtectedRouteProps {
     screen: ReactElement;
+    guestOnly?: boolean;
 }
