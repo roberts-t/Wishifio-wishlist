@@ -12,6 +12,7 @@ import { EditWish } from "./screens/EditWish";
 import { NotFound } from "./screens/NotFound";
 import { Login } from "./screens/Login";
 import { EditWishlist } from "./screens/EditWishlist";
+import { Account } from "./screens/Account";
 
 function App() {
 
@@ -49,6 +50,10 @@ function App() {
             <Route
                 path="signup"
                 element={<ProtectedRoute screen={<Login defaultTab={2} />} guestOnly={true}/>}
+            />
+            <Route
+                path="account"
+                element={<ProtectedRoute screen={<Account />} />}
             />
             <Route path="about" element={<About/>}/>
             <Route path="*" element={<NotFound/>}/>

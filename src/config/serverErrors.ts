@@ -199,3 +199,40 @@ export const deleteWishlistErrors = {
     }
 }
 
+export const userChangePasswordErrors = {
+    'INVALID_PASSWORD': {
+        field: 'password',
+        msg: 'Incorrect current password'
+    },
+    'NEW_PASSWORD_REQ': {
+        field: 'newPassword',
+        msg: 'Password is required'
+    },
+    'NEW_PASSWORD_MIN': {
+        field: 'newPassword',
+        msg: 'Password must be at least 6 characters'
+    },
+    'PASSWORD_MATCH': {
+        field: 'confirmNewPassword',
+        msg: 'Passwords must match'
+    },
+    'SERVER_ERROR': {
+        field: 'general',
+        msg: 'Something went wrong, please try again'
+    }
+}
+
+export const userUpdateDetailsErrors = {
+    'USERNAME_REQ': {
+        field: 'username',
+        msg: 'Username is required'
+    },
+    'USERNAME_LEN': {
+        field: 'username',
+        msg: 'Username must be between 3 and 20 characters'
+    },
+    'SERVER_ERROR': {
+        field: 'general',
+        msg: 'Something went wrong, please try again'
+    }
+}

@@ -7,7 +7,6 @@ import { processServerErrors, signupErrors } from '../../config/serverErrors';
 import { CiMail } from 'react-icons/ci';
 
 export const SignUpForm = () => {
-
     const [generalError, setGeneralError] = React.useState<string | null>(null);
     const [success, setSuccess] = React.useState<boolean>(false);
 
