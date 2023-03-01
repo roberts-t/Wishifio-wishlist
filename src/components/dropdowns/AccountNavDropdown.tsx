@@ -2,8 +2,7 @@ import React, { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { api } from '../../config/request';
 import { FiChevronDown } from 'react-icons/fi';
-import { BsGift } from 'react-icons/bs';
-import { BsDoorOpen } from 'react-icons/bs';
+import { BsGift, BsDoorOpen } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { FaRegUser } from 'react-icons/fa';
 
@@ -48,6 +47,20 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
                                         <BsGift className="mr-1.5" />
                                         <span>My wishlists</span>
                                     </button>
+                                    </Link>
+                                )}
+                            </Menu.Item>
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <Link to="/account">
+                                        <button
+                                            className={`${
+                                                active ? 'bg-sky-500 text-white' : 'text-gray-900'
+                                            } group flex w-full items-center rounded-md px-2 py-2`}
+                                        >
+                                            <FaRegUser className="mr-1.5" />
+                                            <span>Account</span>
+                                        </button>
                                     </Link>
                                 )}
                             </Menu.Item>
