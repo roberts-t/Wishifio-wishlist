@@ -10,6 +10,7 @@ export const AuthContextProvider = ({children} : AuthContextProps) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const getAuthStatus = () => {
+        console.log("Getting auth status")
         api.get("auth/user")
             .then((res) => {
                 if (res.status === 200 && res.data) {

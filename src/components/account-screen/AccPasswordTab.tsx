@@ -6,7 +6,7 @@ export const AccPasswordTab = () => {
     return (
         <div>
             <div className="text-2xl font-bold text-left">Account password</div>
-            <div className="grid grid-cols-2 text-left mt-5 gap-x-16">
+            <div className="grid lg:grid-cols-2 text-left mt-5 gap-x-16">
                 <AccountPasswordForm />
                 <div className="mt-5">
                     <div className="font-semibold text-lg mb-1 flex items-center">

@@ -55,7 +55,7 @@ export const SignInForm: React.FC<SignInFormProps> = (props) => {
             onSubmit={onSubmit}
             submitText="Sign in"
         >
-            <div className="mt-6 flex flex-col gap-y-3">
+            <div className="sm:mt-6 mt-3.5 flex flex-col gap-y-3">
                 {generalError && <div className="text-red-800 text-center py-1.5 px-1 bg-red-200 rounded">{generalError}</div>}
                 <SignInField name="email" type="email" label="Email" />
                 <SignInField name="password" type="password" label="Password" />

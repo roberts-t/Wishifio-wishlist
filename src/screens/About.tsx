@@ -13,7 +13,7 @@ export const About = () => {
     return (
         <Page>
             <div className="h-10 bg-sky-500 relative">
-                <Ornament className="absolute top-2 left-16 h-16 w-16" />
+                <Ornament className="absolute sm:top-2 top-3 sm:left-16 left-8 sm:h-16 sm:w-16 w-14 h-14" />
             </div>
             <div>
             {/* About us, bg image */}

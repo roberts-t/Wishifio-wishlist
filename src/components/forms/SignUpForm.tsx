@@ -76,7 +76,7 @@ export const SignUpForm = () => {
                     submitText="Sign Up"
 
                 >
-                    <div className="mt-6 flex flex-col gap-y-3">
+                    <div className="sm:mt-6 mt-3.5 flex-col gap-y-3">
                         <SignUpField name="email" type="email" label="Email" />
                         <SignUpField name="username" type="text" label="Username" />
                         <SignUpField name="password" type="password" label="Password" />

@@ -10,7 +10,7 @@ export const AccSettingsTab: React.FC<AccSettingsTabProps> = ({user}) => {
                 <div className="leading-none">Your email:</div>
                 <div className="text-gray-500 font-normal">{user.email}</div>
             </div>
-            <div className="grid grid-cols-2 text-left gap-x-16">
+            <div className="grid xl:grid-cols-2 grid-cols-1 text-left gap-x-16 gap-y-5">
                 <AccountSettingsForm initialUsername={user.username} />
                 <div>
                     <div className="font-semibold text-lg mb-1 flex items-center">
@@ -21,7 +21,7 @@ export const AccSettingsTab: React.FC<AccSettingsTabProps> = ({user}) => {
                     <div>
                         <ul>
                             <li className="mb-1">Do not use inappropriate usernames</li>
-                            <li>Keep in mind that your username will be<br/> shown to other users</li>
+                            <li>Keep in mind that your username will be<br className="2xl:block hidden" /> shown to other users</li>
                         </ul>
                     </div>
                 </div>

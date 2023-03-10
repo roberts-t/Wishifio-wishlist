@@ -13,6 +13,7 @@ export const WishlistItem: React.FC<WishlistItemProps> = (props) => {
     const [generalError, setGeneralError] = React.useState<string | null>(null);
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
     const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
+    const [imageLoading, setImageLoading] = useState<boolean>(true);
 
     const handleDelete = () => {
         if (!props.isOwner || !props.wishlistHash) {
@@ -39,42 +40,46 @@ export const WishlistItem: React.FC<WishlistItemProps> = (props) => {
     }
 
     return (
-        <div className="flex flex-row shadow bg-white">
-            <div className="p-3 bg-gray-200 flex-shrink-0 flex items-center">
+        <div className="flex md:flex-row flex-col shadow bg-white">
+            <div className="p-3 bg-gray-200 flex-shrink-0 flex items-center justify-center">
+                {imageLoading && (
+                    <div className="animate-pulse bg-gray-300 w-64 h-48 rounded"></div>
+                )}
                 <img
                     src={process.env.REACT_APP_SERVER_URL + props.item.imageUrl}
-                    className="w-64 h-48 rounded object-cover"
+                    className={"w-64 h-48 rounded object-cover " + (imageLoading && 'hidden')}
                     alt="Product"
+                    onLoad={() => setImageLoading(false)}
                 />
             </div>
-            <div className="flex flex-col p-4 w-full">
-                <div className="uppercase font-bold text-xl text-gray-800">
+            <div className="flex flex-col p-4 min-w-0">
+                <div className="uppercase font-bold text-xl text-gray-800 w-full break-words">
                     {props.item.name}
                 </div>
-                <p className="text-gray-500 h-6">
+                <p className="text-gray-500 min-h-6 w-full break-words">
                     {props.item.subtitle}
                 </p>
-                <div className="grid grid-cols-3 flex-grow-0 mt-5">
+                <div className="grid sm:grid-cols-3 gap-y-2 gap-x-2 grid-cols-1 flex-grow-0 mt-5">
                     <div>
                         <span className="text-gray-600">Price range:</span>
-                        <span className="text-gray-900 font-semibold text-lg block">{props.item.price}</span>
+                        <span className="text-gray-900 font-semibold text-lg block w-full break-words">{props.item.price}</span>
                     </div>
                     <div className="col-span-2">
                         <span className="text-gray-600">Notes:</span>
-                        <span className="text-gray-500 line-clamp-3 block">{props.item.note || "-"}</span>
+                        <span className="text-gray-500 line-clamp-3 block break-words w-full">{props.item.note || "-"}</span>
                     </div>
                 </div>
-                <div className="mb-2 mt-5 flex flex-row justify-center gap-x-5">
+                <div className="mb-2 mt-5 flex flex-row justify-center sm:gap-x-5 gap-x-4 sm:gap-y-0 ">
                     { props.item.url &&
-                        <a href={props.item.url} target="_blank" rel="noreferrer" className="bg-sky-500 rounded px-7 py-2.5 text-white flex flex-row justify-center items-center hover:bg-sky-600 transition gap-x-1">
-                            <AiOutlineLink className="text-lg" /> View website
+                        <a href={props.item.url} target="_blank" rel="noreferrer" className="bg-sky-500 rounded sm:px-7 px-3.5 py-2.5 text-white flex flex-row justify-center items-center hover:bg-sky-600 transition gap-x-1">
+                            <AiOutlineLink className="text-lg" /> <span className="sm:inline hidden">View</span> Website
                         </a>
                     }
                     { props.isOwner && (
                         <>
                             <Link
                                 to={`/wishlist/${props.wishlistHash}/edit/${props.item.id}`}
-                                className="border-gray-700 border-2 rounded px-7 py-2.5 text-dark flex flex-row font-semibold justify-center items-center hover:bg-dark hover:text-white hover:border-dark transition gap-x-1">
+                                className="border-gray-700 border-2 rounded sm:px-7 px-3.5 py-2.5 text-dark flex flex-row font-semibold justify-center items-center hover:bg-dark hover:text-white hover:border-dark transition gap-x-1">
                                 <MdOutlineCreate className="text-lg" /> Edit
                             </Link>
                             <button onClick={handleClickDelete} className="border-red-500 text-red-500 border-2 rounded px-4 py-2.5 text-dark flex flex-row font-semibold justify-center items-center hover:bg-red-500 hover:text-white transition gap-x-1">

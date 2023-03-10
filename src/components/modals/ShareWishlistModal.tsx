@@ -92,7 +92,7 @@ export const ShareWishlistModal: React.FC<ShareWishlistModalProps> = (props) => 
 
                                     <div className="mt-4 flex flex-col">
                                         <p className="font-semibold mb-1">Page link</p>
-                                        <div className="bg-gray-200 py-2 px-3 rounded">
+                                        <div className="bg-gray-200 py-2 px-3 rounded overflow-hidden text-ellipsis">
                                             {shareUrl}
                                         </div>
                                         <button

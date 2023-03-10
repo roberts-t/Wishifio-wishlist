@@ -12,7 +12,6 @@ export const Wishlists = () => {
     const [wishlists, setWishlists] = React.useState([]);
     const [wishlistsLoading, setWishlistsLoading] = React.useState(true);
     const getWishlists = () => {
-        setWishlistsLoading(true);
         api.get('/wishlists').then((res) => {
             setWishlists(res.data);
             setWishlistsLoading(false)
@@ -68,20 +67,20 @@ export const Wishlists = () => {
 
     return (
         <Page>
-            <div className="container mx-auto px-20">
-                <div className="flex flex-col items-center justify-center gap-y-4 py-12">
-                    <h1 className="text-4xl font-bold text-center">
+            <div className="container mx-auto sm:px-20 px-4">
+                <div className="flex flex-col items-center justify-center gap-y-4 sm:py-12 py-8">
+                    <h1 className="sm:text-4xl text-3xl font-bold text-center">
                         My Wishlists
                     </h1>
                 </div>
             </div>
             <div className="bg-neutral py-5 flex-auto">
-                <div className="container mx-auto px-20">
-                    <p className="text-xl font-semibold pt-4 pb-1 text-gray-700">
+                <div className="container mx-auto sm:px-20 px-8">
+                    <p className="sm:text-xl text-lg font-semibold sm:pt-4 pt-3 pb-1 text-gray-700">
                         {wishlists.length} wishlist{wishlists.length > 1 || wishlists.length === 0 ? 's' : ''}
                     </p>
-                    <div className="flex flex-col items-center justify-center py-6">
-                        <div className={"grid w-full gap-6 " + ((wishlists.length > 0 || wishlistsLoading) ? 'grid-cols-3' : 'grid-cols-1')}>
+                    <div className="flex flex-col items-center justify-center sm:py-6 pt-3 pb-10">
+                        <div className={"grid w-full sm:gap-6 gap-8 " + ((wishlists.length > 0 || wishlistsLoading) ? 'lg:grid-cols-2 xl:grid-cols-3  grid-cols-1' : 'grid-cols-1')}>
                             {renderWishlists()}
                         </div>
                     </div>

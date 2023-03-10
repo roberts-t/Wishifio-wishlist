@@ -4,7 +4,7 @@ import { RegisterTabContent } from "./modals/AuthModal/RegisterTabContent";
 export const RegisterScreenTab: React.FC<RegisterScreenTabProps> = (props) => {
     return (
         <>
-            <h1 className="font-semibold text-3xl">
+            <h1 className="font-semibold sm:text-3xl text-2xl">
                 Sign up
             </h1>
             <p className="text-gray-700">

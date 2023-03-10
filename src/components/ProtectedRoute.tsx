@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { LoadingPage } from '../screens/LoadingPage';
 import { AuthContext, AuthContextType } from "../context/AuthContext";
@@ -22,6 +22,6 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({screen, guestOnly
 };
 
 interface ProtectedRouteProps {
-    screen: ReactElement;
+    screen: JSX.Element;
     guestOnly?: boolean;
 }

@@ -10,7 +10,6 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
 
     const logOut = () => {
         api.get('/logout').then(async() => {
-            await props.getAuthStatus();
             window.location.href = "/";
         }).catch((err) => {
             console.log(err);
@@ -19,12 +18,14 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
 
     return (
         <div>
-            <Menu as="div" className="relative inline-block">
-                <Menu.Button className="flex flex-row items-center">
-                    <FaRegUser className="text-3xl mr-1 bg-sky-400 text-white border-sky-500 p-2 rounded-full overflow-visible" />
-                    <span className="font-semibold">{props?.user?.username}</span>
-                    <FiChevronDown className="text-xl" />
-                </Menu.Button>
+            <Menu as="div" className="relative inline-block z-30">
+                {props.user?.username &&
+                    <Menu.Button className="flex flex-row items-center w-48">
+                        <FaRegUser className="text-3xl mr-1 bg-sky-400 text-white border-sky-500 p-2 rounded-full overflow-visible" />
+                        <span className="font-semibold w-full break-words min-w-0">{props?.user?.username}</span>
+                        <FiChevronDown className="text-xl" />
+                    </Menu.Button>
+                }
                 <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
@@ -87,5 +88,4 @@ export const AccountNavDropdown: React.FC<AccountNavDropdownProps> = (props) => 
 
 interface AccountNavDropdownProps {
     user: any;
-    getAuthStatus: () => void;
 }
